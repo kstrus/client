@@ -25,10 +25,10 @@ export const signOut = () => {
     };
 };
 
-export const createStream = (formdata) => {
+export const createStream = (formData) => {
     return (dispatch, getState) => {
         const { userId } = getState().auth;
-        streams.post('/streams', { ...formdata, userId: userId }).then((response) => {
+        streams.post('/streams', { ...formData, userId: userId }).then((response) => {
             dispatch({
                 type: CREATE_STREAM,
                 payload: response.data
@@ -62,11 +62,12 @@ export const fetchStreams = () => {
 
 export const editStream = (id, formData) => {
     return (dispatch) => {
-        streams.put(`/streams/${id}`, formData).then((response) => {
+        streams.patch(`/streams/${id}`, formData).then((response) => {
             dispatch({
                 type: EDIT_STREAM,
                 payload: response.data
             });
+            history.push('/');
         });
     };
 };

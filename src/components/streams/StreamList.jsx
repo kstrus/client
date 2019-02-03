@@ -9,12 +9,12 @@ class StreamList extends React.Component {
         this.props.fetchStreams();
     }
 
-    renderEditDeleteButtons(userId) {
-        if (this.props.currentUserId === userId) {
+    renderEditDeleteButtons(stream) {
+        if (this.props.currentUserId === stream.userId) {
             return (
                 <div className="right floated content">
-                    <button className="ui basic grey tiny button">Edit</button>
-                    <button className="ui basic negative tiny button">Delete</button>
+                    <Link to={`/streams/edit/${stream.id}`} className="ui basic grey tiny button">Edit</Link>
+                    <Link to={`/streams/delete/${stream.id}`} className="ui basic negative tiny button">Delete</Link>
                 </div>
             );
         }
@@ -31,7 +31,7 @@ class StreamList extends React.Component {
         return this.props.streams.map(stream => {
             return (
                 <div className="item" key={stream.id}>
-                    {this.renderEditDeleteButtons(stream.userId)}
+                    {this.renderEditDeleteButtons(stream)}
                     <i className="large middle aligned icon camera"/>
                     <div className="content">
                         <div className="header">{stream.title}</div>
