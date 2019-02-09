@@ -81,6 +81,7 @@ export const deleteStream = (id) => {
                     id: id
                 }
             });
+            history.push('/');
         });
     };
 };
