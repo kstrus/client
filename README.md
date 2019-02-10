@@ -5,3 +5,5 @@ In the project directory, run:
 ### `npm start`
 
 json server: https://github.com/kstrus/server
+
+rtmp server: https://github.com/kstrus/rtmpserver
